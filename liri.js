@@ -6,19 +6,24 @@ var keys = require("./keys.js");*/
 
 
 //********* MOVIE*/
-/*var axios = require("./node_modules/axios");
+var axios = require("./node_modules/axios");
 
 // Store all of the arguments in an array
-var nodeArgs = process.argv;
 
+
+
+var OptionArgs = process.argv[2];
+
+if(OptionArgs ==="movie-this"){
+  var nodeArgs = process.argv;
 // Create an empty variable for holding the movie name
 var movieName = "";
 
 // Loop through all the words in the node argument
 // And do a little for-loop magic to handle the inclusion of "+"s
-for (var i = 2; i < nodeArgs.length; i++) {
+for (var i = 3; i < nodeArgs.length; i++) {
 
-  if (i > 2 && i < nodeArgs.length) {
+  if (i > 3 && i < nodeArgs.length) {
     movieName = movieName + "+" + nodeArgs[i];
   }
   else {
@@ -45,11 +50,12 @@ axios.get(queryUrl).then(
     console.log("Actors: " + response.data.Actors);
 
   }
-);*/
-
+);}
+if(OptionArgs ==="Concert-this"){
 //**********Concert this  */
 var axios = require("./node_modules/axios");
 
+//concert-this   spotify-this-song
 // Store all of the arguments in an array
 var nodeArgs = process.argv;
 
@@ -58,9 +64,9 @@ var artist = "";
 
 // Loop through all the words in the node argument
 // And do a little for-loop magic to handle the inclusion of "+"s
-for (var i = 2; i < nodeArgs.length; i++) {
+for (var i = 3; i < nodeArgs.length; i++) {
 
-  if (i > 2 && i < nodeArgs.length) {
+  if (i > 3 && i < nodeArgs.length) {
     artist= artist + "%20" + nodeArgs[i];
   }
   else {
@@ -90,8 +96,8 @@ axios.get(queryUrl).then(
     }
 
 
-  });
+  });}
 //https://developer.spotify.com/documentation/web-api/reference/search/search/
 //https://www.npmjs.com/package/node-spotify-api
 //https://developer.spotify.com/dashboard/login
-//https://www.npmjs.com/package/node-spotify-api
+//https://www.npmjs.com/package/node-spotify-api*/
