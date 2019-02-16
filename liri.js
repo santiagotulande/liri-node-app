@@ -5,13 +5,10 @@ var keys = require("./keys.js");*/
 
 
 
-//********* MOVIE*/
+//********* MOVIE
 var axios = require("./node_modules/axios");
 
 // Store all of the arguments in an array
-
-
-
 var OptionArgs = process.argv[2];
 
 if(OptionArgs ==="movie-this"){
@@ -20,7 +17,7 @@ if(OptionArgs ==="movie-this"){
 var movieName = "";
 
 // Loop through all the words in the node argument
-// And do a little for-loop magic to handle the inclusion of "+"s
+// And do a little for-loop to handle the inclusion of "+"s
 for (var i = 3; i < nodeArgs.length; i++) {
 
   if (i > 3 && i < nodeArgs.length) {
@@ -35,7 +32,7 @@ for (var i = 3; i < nodeArgs.length; i++) {
 // Then run a request with axios to the OMDB API with the movie specified
 var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 
-// This line is just to help us debug against the actual URL.
+
 console.log(queryUrl);
 
 axios.get(queryUrl).then(
@@ -51,11 +48,14 @@ axios.get(queryUrl).then(
 
   }
 );}
+
+
+//**********Concert this  
+
 if(OptionArgs ==="Concert-this"){
-//**********Concert this  */
+
 var axios = require("./node_modules/axios");
 
-//concert-this   spotify-this-song
 // Store all of the arguments in an array
 var nodeArgs = process.argv;
 
@@ -63,7 +63,7 @@ var nodeArgs = process.argv;
 var artist = "";
 
 // Loop through all the words in the node argument
-// And do a little for-loop magic to handle the inclusion of "+"s
+// And do for-loop to handle the inclusion of "%20"s
 for (var i = 3; i < nodeArgs.length; i++) {
 
   if (i > 3 && i < nodeArgs.length) {
@@ -75,11 +75,10 @@ for (var i = 3; i < nodeArgs.length; i++) {
   }
 }
 
-// Then run a request with axios to the OMDB API with the movie specified
+// Then run a request with axios to the bandsintown API with the artist specified
 var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
 
 
-// This line is just to help us debug against the actual URL.
 console.log(queryUrl);
 
 axios.get(queryUrl).then(
@@ -97,7 +96,45 @@ axios.get(queryUrl).then(
 
 
   });}
-//https://developer.spotify.com/documentation/web-api/reference/search/search/
-//https://www.npmjs.com/package/node-spotify-api
-//https://developer.spotify.com/dashboard/login
-//https://www.npmjs.com/package/node-spotify-api*/
+
+//********** */spotify*****************************
+if(OptionArgs ==="spotify-this-song"){
+  var nodeArgs = process.argv;
+// Create an empty variable for holding the song name
+var songName = "";
+
+// Loop through all the words in the node argument
+// And do a lfor-loop to handle the inclusion of "+"s
+for (var i = 3; i < nodeArgs.length; i++) {
+
+  if (i > 3 && i < nodeArgs.length) {
+    songName = songName + " " + nodeArgs[i];
+  }
+  else {
+    songName += nodeArgs[i];
+
+  }
+}
+
+var Spotify = require('node-spotify-api');
+ 
+var spotify = new Spotify({
+  id: "9b52e0a1ee1a4473acc2a036ba9cfc96",
+  secret: "1988a48dc0cf451ba0484eb153b4851e"
+});
+ 
+spotify.search({ type: 'track', query: songName }, function(err, data) {
+  if (err) {
+    return console.log('Error occurred: ' + err);
+  }
+  for(var i=0; i<data.tracks.items.length; i++){
+  console.log(songName);
+console.log(data.tracks.items[i].artists[i].name); 
+console.log(data.tracks.items[i].name); 
+console.log(data.tracks.items[i].external_urls.spotify)
+console.log(data.tracks.items[i].album.name)
+console.log("---------------------------------------------------")
+
+  }
+})
+}

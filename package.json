@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "node-spotify-api": "^1.0.7"
   },
   "devDependencies": {},
   "scripts": {
