@@ -78,19 +78,19 @@ console.log(queryUrl);
 
 axios.get(queryUrl).then(
   function(response) {
-    for(var i=0; i<response.lenght; i++){
+  for(var i=0; i<3; i++){
 
+      
        console.log(response.data[i].venue.name);
        console.log(response.data[i].venue.city);
        console.log(response.data[i].venue.region);
        console.log(response.data[i].venue.country);
        console.log(response.data[i].datetime);
-
+       console.log("----------------------------");
     }
 
 
-  }
-);
+  });
 //https://developer.spotify.com/documentation/web-api/reference/search/search/
 //https://www.npmjs.com/package/node-spotify-api
 //https://developer.spotify.com/dashboard/login
