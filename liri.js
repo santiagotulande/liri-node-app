@@ -78,7 +78,7 @@ console.log(queryUrl);
 
 axios.get(queryUrl).then(
   function(response) {
-  for(var i=0; i<3; i++){
+  for(var i=0; i<response.data.length; i++){
 
       
        console.log(response.data[i].venue.name);
