@@ -119,8 +119,8 @@ for (var i = 3; i < nodeArgs.length; i++) {
 var Spotify = require('node-spotify-api');
  
 var spotify = new Spotify({
-  id: "9b52e0a1ee1a4473acc2a036ba9cfc96",
-  secret: "1988a48dc0cf451ba0484eb153b4851e"
+  id: ,
+  secret: 
 });
  
 spotify.search({ type: 'track', query: songName }, function(err, data) {
